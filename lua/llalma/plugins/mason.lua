@@ -10,4 +10,8 @@ return {
         },
       },
     build = ":MasonUpdate",
+	init = function()
+		require("mason").setup()
+		require("mason-lspconfig").setup()
+	end
 }
