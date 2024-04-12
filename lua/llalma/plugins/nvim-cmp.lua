@@ -28,7 +28,7 @@ M.config = function()
 		},
 		mapping = cmp.mapping.preset.insert({
 			["<C-a>"] = cmp.mapping.abort(),
-			["<tab>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+			["<S-tab>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 		}),
 		sources = cmp.config.sources({
 			{ name = "nvim_lsp" },
