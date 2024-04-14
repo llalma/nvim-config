@@ -9,19 +9,13 @@ init =  {
         require("formatter").setup({
             -- All formatter configurations are opt-in
             filetype = {
-                ["*"] = {
-                    require("formatter.filetypes.any").remove_trailing_whitespace,
-                    function()
-                        vim.lsp.buf.format({ async = true })
-                    end,
-                },
-		["python"] = { 
+		["python"] = {
 		    require("formatter.filetypes.python").black,
                     function()
                         vim.lsp.buf.format({ async = true })
                     end,
 		},
-		["rust"] = { 
+		["rust"] = {
 		    require("formatter.filetypes.rust").rustfmt,
                     function()
                         vim.lsp.buf.format({ async = true })
@@ -38,13 +32,13 @@ init =  {
 		group = "__formatter__",
 		command = ":FormatWrite",
 	})
-    end	
+    end
 }
 
 return init
 
 
 -- Remap
--- vim.keymap.set("n", 
+-- vim.keymap.set("n",
 -- 	"<leader>/",
  	-- function() require("Comment.api").toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1) end
