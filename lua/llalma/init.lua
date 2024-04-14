@@ -26,7 +26,7 @@ require("lazy").setup(
       },
 
       -- Load everything else
-      {import = "llalma/plugins"}
+      {import = "llalma/plugins"},
     }
 )
 

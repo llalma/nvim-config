@@ -28,5 +28,6 @@ vim.keymap.set("n", "<leader>fu", "<cmd>Telescope undo<cr>")
 
 vim.keymap.set('n', '<leader>ff', "<cmd>Telescope find_files<cr>", {})
 vim.keymap.set('n', '<leader>fg', "<cmd>Telescope live_grep<cr>", {})
+vim.keymap.set('n', '<leader>f/', function() require("telescope.builtin").current_buffer_fuzzy_find() end, {desc="Find text in current file"})
 
 return init
