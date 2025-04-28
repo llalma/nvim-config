@@ -28,18 +28,23 @@ return {
         event = {"BufReadPre", "BufNewFile"},
         dependencies = {"williamboman/mason.nvim", "nvimtools/none-ls.nvim"},
         config = function()
+          local null_ls = require("null-ls")
+
+          null_ls.register(null_ls.builtins.formatting.terraform_fmt.with({
+            command = "terraform",
+            args = {"fmt", "-"},
+            filetypes = {"terraform", "tf", "terraform-vars"},
+          }))
+
+
             require("mason-null-ls").setup({
                 automatic_installation = true,
                 automatic_setup = true,
-                handlers = {
-                    function(source_name, methods)
-                        require("mason-null-ls.automatic_setup")(source_name,
-                                                                 methods)
-                    end
-                }
+                handlers = {},
             })
         end
-    }, {
+    }, 
+  {
         "williamboman/mason-lspconfig.nvim",
         dependencies = {"williamboman/mason.nvim"},
         config = function()
@@ -52,5 +57,6 @@ return {
             }
 
         end
-    }, {"neovim/nvim-lspconfig"}
+    }, 
+  {"neovim/nvim-lspconfig"}
 }
