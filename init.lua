@@ -13,6 +13,13 @@ vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 
+-- Folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
+
 -- Load lazyvim
 require("config.lazy")
 
@@ -32,4 +39,17 @@ vim.api.nvim_create_autocmd("VimEnter", {
 			end, 10)
 		end
 	end,
+})
+
+vim.filetype.add({
+	extension = {
+		slint = "slint",
+	},
+})
+
+vim.diagnostic.config({
+	virtual_text = false, -- Disable same-line extension text
+	virtual_lines = {
+		only_current_line = true, -- Render wrapped error lines below the active line
+	},
 })
